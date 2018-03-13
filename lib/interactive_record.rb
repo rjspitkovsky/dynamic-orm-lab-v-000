@@ -54,8 +54,12 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute_hash)
-    # sql = "SELECT * FROM #{self.table_name} WHERE ? = ?"
-    # DB[:conn].execute(sql, attribute, )
+    array = []
+    attribute_hash.each do |key, value|
+      sql = "SELECT * FROM #{self.table_name} WHERE #{key.to_s} = '#{value}'"
+      array << DB[:conn].execute(sql)
+    end
+    array.flatten
   end
 
 

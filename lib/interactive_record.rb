@@ -61,6 +61,4 @@ class InteractiveRecord
     end
     array.flatten
   end
-
-
 end
